@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
-#import os
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,21 +26,24 @@ SECRET_KEY = 'a795c(+9#hdt#tahl&t$sv*8q9vb$w#-7r8*&a4(sgg56=kj7&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mysite.com', 'localhost', '127.0.0.1']
 
 # Application definition
 
 INSTALLED_APPS = [
     #local
     'account.apps.AccountConfig', 
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles', 
-   
+    'django.contrib.staticfiles',
     
+    #third-party
+    'social_django',
+    'django_extensions',         
 ]
 
 MIDDLEWARE = [
@@ -123,8 +126,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-#MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
-MEDIA_ROOT = str(BASE_DIR.joinpath('media/'))
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+#MEDIA_ROOT = str(BASE_DIR.joinpath('media/'))
 
 LOGIN_REDIRECT_URL = 'dashboard'
 LOGIN_URL = 'login'
@@ -132,3 +135,11 @@ lOGOUT_URL = 'logout'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'account.authentication.EmailAuthBackend',
+    'social_core.backends.google.GoogleOAuth2',
+]
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '1093071973994-jg33un7j597ujmk5fj4qge8o171s3pel.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
