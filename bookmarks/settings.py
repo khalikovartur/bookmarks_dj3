@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     
     #third-party
     'social_django',
-    'django_extensions',         
+    'django_extensions',   
+    'easy_thumbnails',      
 ]
 
 MIDDLEWARE = [
@@ -142,5 +143,5 @@ AUTHENTICATION_BACKENDS = [
     'social_core.backends.google.GoogleOAuth2',
 ]
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = ''
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = ''
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '1093071973994-r4g4vtjufce93nsohttqtp1v71djdil9.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
