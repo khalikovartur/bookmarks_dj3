@@ -33,7 +33,7 @@ ALLOWED_HOSTS = ['mysite.com', 'localhost', '127.0.0.1']
 INSTALLED_APPS = [
     #local
     'account.apps.AccountConfig', 
-    'images.apps.ImagesConfig',
+    
     
     'django.contrib.admin',
     'django.contrib.auth',
@@ -45,7 +45,10 @@ INSTALLED_APPS = [
     #third-party
     'social_django',
     'django_extensions',   
-    'easy_thumbnails',      
+    'easy_thumbnails', 
+    
+    'images.apps.ImagesConfig',
+    'actions.apps.ActionsConfig',     
 ]
 
 MIDDLEWARE = [
@@ -154,3 +157,7 @@ ABSOLUTE_URL_OVERRIDES = {
 }
 
 #THUMBNAIL_DEBUG = True
+
+REDIS_HOST = 'localhost'
+REDIS_PORT = 6379
+REDIS_DB = 0

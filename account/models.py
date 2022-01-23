@@ -7,7 +7,7 @@ class Profile(models.Model):
         on_delete=models.CASCADE)
     date_of_birth = models.DateField(blank=True, null=True)
     photo = models.ImageField(upload_to='users/%Y/%m/%d/',
-        blank=True,)
+        blank=True)
 
     def __str__(self):
         return f'Profile for user {self.user.username}.'
@@ -27,7 +27,7 @@ class Contact(models.Model):
     
 # Add following field to User dynamically
 user_model = get_user_model()
-user_model.add_to_class('folowing',
+user_model.add_to_class('following',
     models.ManyToManyField('self',
                            through=Contact, 
                            related_name='followers', 
